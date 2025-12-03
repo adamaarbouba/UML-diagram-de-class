@@ -80,6 +80,14 @@ INSERT INTO lending (lending_date_start, lending_date_end, game_id, member_id) V
 ('2024-11-28', '2024-12-30', 5, 10),
 ('2024-11-25', '2024-11-30', 4, 2);
 
+INSERT INTO tournament_result (tournament_result, tournament_ranking, tournament_id, member_id)
+VALUES
+('Winner', 1, 3, 3),
+('Qualifier', 8, 1, 5),
+('Participated', 15, 4, 2),
+('Runner-up', 2, 4, 6);
+
+
 SELECT * FROM tournament where tournament_id = 3;
 
 SELECT * FROM member;
@@ -90,3 +98,11 @@ SELECT lending_id,lending_date_start,lending_date_end,lending.member_id,username
 lending.member_id = member.member_id;
 
 
+SELECT username,tournament_id,tournament_ranking FROM member inner join tournament_result on member.member_id = tournament_result.member_id;
+
+SELECT member_id,username,phone_number,email  FROM member where subscription = 1; 
+
+
+SELECT game.game_id,game_name from  lending inner join game on lending.game_id = game.game_id;
+
+SELECT member_id,username, subscription from member ;
